@@ -1,0 +1,15 @@
+version: "3.1"
+services:
+    cron:
+        image: dmunozg/blink-cron:dev
+        volumes:
+            "/tmp/logs:/logs"
+    downloader:
+        image: dmunozg/blink-downloader:dev
+        volumes:
+            "/tmp/logs:/logs"
+        secrets:
+            - blinkconfig
+secrets:
+    blinkconfig:
+        file: /home/dmunozg/.blinkconfig
